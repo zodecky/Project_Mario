@@ -1,26 +1,7 @@
-
-XXX  XX    XXXXXX       
-                            
-          GGGGGGG            
-     P                       
-                 
-                          GGGGGGGGGGGXXXXXXXXXXXXXXXXXX
-                        
-                                                                          XXXXXXXXXXX
- GGGGGGGGG             
-                               
- XXGGGGGGGGGGGGGGGXXXXX     GGGGGGG                              XXXXXXXXXXX         XXXXXXXXXXX
- GGGGGGGGGGGGGGGGGGGGGGGGGGG            
-XXXXXXXXXXX                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
- XXXXXXXXXXX                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
- XXXXXXXXXXX            
-  XXXXXXXXXXXXXXXXXXXXXX            
-     XXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX           
-     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX            
-     XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX           
-   XXXXXXXXXXXXXXXXXXXXXX            
-     XXXXXXXXXXXXXXXXXXXXXX            
-     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX            
-     XXXXXXXXXXX            
-     XXXXXXXXXXX            
-     XXXXXXXXXXX        
+                                M
+                            AWWWWZ                                                                              S T
+                      AWWWZ                                         S  AWWZ  AWZ  S   AWWZ                   S    O
+   P           AWWWZ                                               S                                   AWWZ       O
+LGGGGGGGGR                     M      LGGGR  M    M    LGGGR      S                         LGGR    M    M        O
+EXXXXXXXXDLGGGGGGGGGGGGGGGGGGGGGGGGGGREXXXDLGGGGGGGGGGREXXXDLGGGGR                          EXXDLGGGGGGGGGGGGGGGGROLGGGGGGGGGGGGGGGGGGGG
+EXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXD                          EXXXXXXXXXXXXXXXXXXXXDOEXXXXXXXXXXXXXXXXXXXX

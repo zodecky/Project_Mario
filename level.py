@@ -20,7 +20,23 @@ class Level:
 
         # DEFINICOES DE TILES DA LISTA: - - - - - - - - - - - - - -
         ground_tile = terrain_tile_list[1]
-        canto_esquerdo_tile = terrain_tile_list[2]
+        ground_esquerdo_tile = terrain_tile_list[0]
+        ground_direito_tile = terrain_tile_list[2]
+        meio_tile = terrain_tile_list[5]
+        canto_esquerdo_tile = terrain_tile_list[4]
+        canto_direito_tile = terrain_tile_list[6]
+        fim_esquerda_tile = terrain_tile_list[8]
+        fim_meio_tile = terrain_tile_list[9]
+        fim_direita_tile = terrain_tile_list[10]
+        torre_cima_tile = terrain_tile_list[3]
+        torre_meio_tile = terrain_tile_list[7]
+        torre_fim_tile = terrain_tile_list[11]
+        ground_solo_meio_tile = terrain_tile_list[13]
+        ground_solo_esquerdo_tile = terrain_tile_list[12]
+        ground_solo_direito_tile = terrain_tile_list[14]
+        ground_solo_tile = terrain_tile_list[15]
+
+        
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         for row_i, row in enumerate(layout):
@@ -30,14 +46,56 @@ class Level:
                 x = col_i * tile_size  # Posicao X do tile
                 y = row_i * tile_size  # Posiciona o tile
 
-                if cell == "X":  # Referencia se tem um X no mapa.
+                if cell == "G":  # Referencia se tem um X no mapa.
                     # Instancia o tile
                     tile = StaticTile((x, y), tile_size, ground_tile)
                     self.tiles.add(tile)  # Adiciona o tile ao grupo de sprites
-                elif cell == "G":
+                elif cell == "L":
+                    tile = StaticTile((x, y), tile_size, ground_esquerdo_tile)
+                    self.tiles.add(tile)
+                elif cell == "R":
+                    tile = StaticTile((x, y), tile_size, ground_direito_tile)
+                    self.tiles.add(tile)
+                elif cell == "E":
                     tile = StaticTile((x, y), tile_size, canto_esquerdo_tile)
                     self.tiles.add(tile)
-
+                elif cell == "X":
+                    tile = StaticTile((x, y), tile_size, meio_tile)
+                    self.tiles.add(tile)
+                elif cell == "D":
+                    tile = StaticTile((x, y), tile_size, canto_direito_tile)
+                    self.tiles.add(tile)
+                elif cell == "T":
+                    tile = StaticTile((x, y), tile_size, torre_cima_tile)
+                    self.tiles.add(tile)
+                elif cell == "O":
+                    tile = StaticTile((x, y), tile_size, torre_meio_tile)
+                    self.tiles.add(tile)
+                elif cell == "F":
+                    tile = StaticTile((x, y), tile_size, torre_fim_tile)
+                    self.tiles.add(tile)
+                elif cell == "S":
+                    tile = StaticTile((x, y), tile_size, ground_solo_tile)
+                    self.tiles.add(tile)
+                elif cell == "A":
+                    tile = StaticTile((x, y), tile_size, ground_solo_esquerdo_tile)
+                    self.tiles.add(tile)
+                elif cell == "W":
+                    tile = StaticTile((x, y), tile_size, ground_solo_meio_tile)
+                    self.tiles.add(tile)
+                elif cell == "Z":
+                    tile = StaticTile((x, y), tile_size, ground_solo_direito_tile)
+                    self.tiles.add(tile)
+                elif cell == "Y":
+                    tile = StaticTile((x, y), tile_size, fim_esquerda_tile)
+                    self.tiles.add(tile)
+                elif cell == "U":
+                    tile = StaticTile((x, y), tile_size, fim_meio_tile)
+                    self.tiles.add(tile)
+                elif cell == "I":
+                    tile = StaticTile((x, y), tile_size, fim_direita_tile)
+                    self.tiles.add(tile)
+                ##### Adicionar M para monstro e K para poder
                 elif cell == "P":  # Referencia se tem um P no mapa.
                     # Instancia o Player
                     player_sprite = Player((x, y))
