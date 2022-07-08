@@ -2,26 +2,32 @@ import pygame, sys
 from tiles import StaticTile, Tile
 from player import PLAYER_SPEED, Player
 from monstro import MONSTRO_SPEED, Monstro
+from bandeira import Bandeira
 from configuracoes import tile_size, screen_width, screen_height
 from utilitarios import import_cut_graphics
 
 pygame.mixer.init()
 som_morte = pygame.mixer.Sound("assets/hit.wav")
+som_win = pygame.mixer.Sound("assets/swoosh.wav")
 game_over_sprite = pygame.image.load("assets/gameover.png")
-contador = 0
 
 class Level:
 
-    def __init__(self, level_data, superficie):
+    def __init__(self, level_data, superficie, level_indice=0):
         self.display = superficie
         self.setup_level(level_data)
         self.shift_tudo = 0  # Desloca o nível ao invés do jogador (por quanto)
         self.game_over = False
+        self.level_completo = False
+        self.indice = level_indice
+        self.contador = 0
+
 
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()  # Cria um grupo de sprites
         self.monstros = pygame.sprite.Group()  # Cria um grupo de sprites monstros
         self.player = pygame.sprite.GroupSingle()  # Cria um grupo só com 1 sprite
+        self.bandeira = pygame.sprite.GroupSingle()  # Cria um grupo só com 1 sprite
         terrain_tile_list = import_cut_graphics(
             "assets/PNG/terrain_tiles.png")
 
@@ -116,6 +122,11 @@ class Level:
                     # Adiciona o Monstro ao grupo de sprites
                     self.monstros.add(monstro_sprite)
 
+                elif cell == "B":
+                    # Instancia a bandeira
+                    bandeira_sprite = Bandeira((x, y))
+                    self.bandeira.add(bandeira_sprite)
+
 
     def scroll_x(self):  # move o nível e para o player
 
@@ -197,13 +208,29 @@ class Level:
                     player.pulo(do_monstro=True)
                     # Toca o som:
                     som_morte.play()
-                    
-
                     monstro.kill()
                 
                 # Player morreu
                 elif player.direcao.y <= 0:
                     self.game_over = True
+
+    def colisao_simples(self):
+        player = self.player.sprite
+        bandeira = self.bandeira.sprite
+        if player.rect.colliderect(bandeira.rect):
+            print("Você venceu!")
+            som_win.play()
+            # kill all tiles
+            self.tiles.empty()
+            # kill all monstros
+            self.monstros.empty()
+            # kill all bandeira
+            self.bandeira.empty()
+            # kill all player
+            self.player.empty()
+
+            # Load proximo nivel
+            self.level_completo = True
 
     def run(self):
         # Atualiza o grupo de tiles com o shift (camera)
@@ -211,15 +238,17 @@ class Level:
         self.player.update() if not self.game_over else None # Atualiza o player
         self.tiles.update(self.shift_tudo)  # Atualiza o grupo de tiles
         self.monstros.update(self.shift_tudo)  # Atualiza o grupo de monstros
+        self.bandeira.update(self.shift_tudo)  # Atualiza o grupo de bandeira
         self.tiles.draw(self.display)  # Desenha os tiles
         self.monstros.draw(self.display)  # Desenha os monstros
         self.player.draw(self.display)  # Desenha o player
+        self.bandeira.draw(self.display)  # Desenha a bandeira
 
         if self.game_over:
-            global contador
-            if not contador:
+
+            if not self.contador:
                 som_morte.play()
-                contador = 1
+                self.contador = 1
             # Display image on center of screen
             self.display.blit(game_over_sprite, (screen_width / 2 - game_over_sprite.get_width() / 2,
                                                     screen_height / 2 - game_over_sprite.get_height() / 2))
@@ -231,14 +260,14 @@ class Level:
             self.player.sprite.direcao.y = velocidade_y_player
             self.player.sprite.rect.y += velocidade_y_player
 
-            contador += 1
+            self.contador += 1
             # black out screen bit by bit
 
-            self.display.fill((0, 0, 0)) if contador > 250 else None
+            self.display.fill((0, 0, 0)) if self.contador > 250 else None
 
-            if contador == 400:
-                pygame.quit()
-                sys.exit()
+            if self.contador == 400:
+                self.level_completo = True
+                self.indice -= 1
 
 
 
@@ -247,3 +276,4 @@ class Level:
         self.scroll_x()
         self.colisao_x()
         self.colisao_y()
+        self.colisao_simples()

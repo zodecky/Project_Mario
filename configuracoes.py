@@ -9,6 +9,8 @@ def converte_txt_para_lista(path):
 
 
 mapa = converte_txt_para_lista("nivel0.txt")
+mapa1 = converte_txt_para_lista("nivel1.txt")
+mapa2 = converte_txt_para_lista("nivel2.txt")
 
 tile_size = 64
 screen_width = 1200
