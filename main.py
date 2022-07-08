@@ -1,4 +1,8 @@
 """ Rode esse arquivo para executar o programa."""
+
+# Gabriel Zagury
+# Luiza Marcondes
+
 import pygame
 import sys
 from configuracoes import *
